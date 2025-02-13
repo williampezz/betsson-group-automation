@@ -17,6 +17,16 @@ public class LoginPage {
     @AndroidFindBy(accessibility = "test-Password")
     private WebElement passwordField;
 
+    @AndroidFindBy(accessibility = "test-LOGIN")
+    private WebElement loginButton;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='PRODUCTS']")
+    private WebElement productsTitle;
+
+    @AndroidFindBy(accessibility = "test-Error message")
+    private WebElement loginTextError;
+
+
 
     public LoginPage(AndroidDriver driver) {
         this.driver = driver;
@@ -30,6 +40,22 @@ public class LoginPage {
     public void enterPassword(String password) {
         passwordField.sendKeys(password);
     }
+
+    public void clickLogin() {
+        loginButton.click();
+    }
+
+    public boolean isLoggedIn() {
+        return productsTitle.isDisplayed();
+    }
+
+    public boolean isLoginErrorDisplayed() {
+        return loginTextError.isDisplayed();
+    }
+
+
+
+
 
 
 }
